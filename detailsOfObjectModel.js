@@ -1,4 +1,6 @@
 //Creating the hierarchy
+var idCounter = 1;
+
 function Employee(name, dept) {
   this.name = name || '';
   this.dept = dept || 'general';
@@ -20,6 +22,7 @@ function WorkerBee(name , dept , projs) {
   this.base(name,dept);
   this.projects = projs || [];
 }
+//Following is same.!
 //WorkerBee.prototype = Object.create(Employee.prototype);
 WorkerBee.prototype = new Employee;
 //WorkerBee.prototype = new Employee;
@@ -33,16 +36,35 @@ function SalesPerson() {
 SalesPerson.prototype = Object.create(WorkerBee.prototype);
 SalesPerson.prototype.constructor = SalesPerson;
 
-function Engineer(name, projs, mach) {
+//2019-4-29 Multiple Inheritance
+function Hobbyist(hobby) {
+   this.hobby = hobby || 'scuba';
+}
+
+function Engineer(name, projs, mach, hobby) {
   // WorkerBee.call(this);
-  this.base  = WorkerBee;
-  this.base(name,"engineering",projs);
+  this.base1  = WorkerBee;
+  this.base1(name,"engineering",projs);
+
+  this.base2 = Hobbyist;
+  this.base2(hobby);
    //this.dept = 'engineering';
    this.machine = mach || '';
 }
 //Engineer.prototype = Object.create(WorkerBee.prototype)
 
 Engineer.prototype = new WorkerBee;
+
+var dennis = new Engineer('Doe, Dennis', ['collabra'], 'hugo');
+
+//2019-4-29 The dennis object does not inherit this new property.
+Hobbyist.prototype.equipment = ['mask', 'fins', 'regulator', 'bcd'];
+
+
+console.log('Dennis.name='+dennis.name);
+console.log('Dennis.dept='+dennis.dept);
+console.log('Dennis.hobby='+dennis.hobby);
+console.log('Dennis.equipment='+dennis.equipment);
 //Engineer.prototype.constructor = Engineer;
 
 //New Class, derived from WorkerBee
@@ -101,7 +123,7 @@ Employee.prototype.specialty = 'none3';
 //Employee2.prototype.specialty = 'none';
 console.log("mark(WorkerBee) specialty property: "+mark.specialty );
 
-var jane = new Engineer('Doe, Jane', ['navigator', 'javascript'], 'belau');
+var jane = new Engineer2('Doe, Jane', ['navigator', 'javascript'], 'belau');
 
 Engineer2.prototype.specialty = 'none';
 

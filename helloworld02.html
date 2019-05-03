@@ -1,12 +1,35 @@
 <!DOCTYPE html>
+
 <html>
 <head>
+	<style>
+		.output ul {
+		  padding-left: 0;
+		}
+
+		.output li {
+		  display: block;
+		  float: left;
+		  width: 25%;
+		  border: 2px solid white;
+		  padding: 5px;
+		  height: 40px;
+		  background-color: #4A2DB6;
+		  color: white;
+		}
+
+		html {
+		  font-family: sans-serif;
+		}	
+	</style>
+
 	<title>test#1</title>
 	<script src="iteratorsAndGenerators.js" type="text/javascript" charset="utf-8" async defer></script>
 	<script src="proxies.js" type="text/javascript" charset="utf-8" async defer></script>
 	<script src="conditionals.js" type="text/javascript" charset="utf-8" async defer></script>
 </head>
 <body>
+	<div class  = "output">
 	<label for="weather">Select the weather type today: </label>
 			<select id="weather">
 			  <option value="">--Make a choice--</option>
@@ -16,6 +39,13 @@
 			  <option value="overcast">Overcast</option>
 			</select>
 
-<p></p>
+
+	<label for="theme">Select theme: </label>
+			<select id="theme">
+			  <option value="white">White</option>
+			  <option value="black">Black</option>
+			</select>
+			<p></p>
+	</div>
 </body>
 </html>
